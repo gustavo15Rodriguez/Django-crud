@@ -1,0 +1,35 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Job Code</th>
+                <th scope="col">Job Description</th>
+                <th scope="col">Job chg Hour</th>
+                <th scope="col">Job Last Update</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% if object_list %}
+                {% for job in object_list %}
+                    <tr class="table-light">
+                        <th scope="row">{{ job.job_code }}</th>
+                        <td>{{ job.job_description }}</td>
+                        <td>{{ job.job_chg_hour }}</td>
+                        <td>{{ job.job_last_update }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="{% url 'job_edit' job.job_code %}">Edit</a>
+                            <a class="btn btn-danger" href="{% url 'job_delete' job.job_code %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <h3>In this register doesn't exist jobs.</h3>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock content %}

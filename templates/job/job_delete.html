@@ -1,0 +1,11 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <form method="post">{% csrf_token %}
+        <br>
+        <h3>Are you sure to eliminate the job {{ object.job_description }}?</h3>
+        <br>
+        <button type="submit" class="btn btn-danger">Yes, Eliminate</button>
+        <a href="{% url 'job_list' %}" class="btn btn-success">Cancel</a>
+    </form>
+{% endblock content %}

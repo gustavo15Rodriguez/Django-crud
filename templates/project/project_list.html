@@ -1,0 +1,36 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Number</th>
+                <th scope="col">Project Name</th>
+                <th scope="col">Value</th>
+                <th scope="col">Balance</th>
+                <th scope="col">Employee Number</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% if object_list %}
+                {% for project in object_list %}
+                    <tr class="table-light">
+                        <th scope="row">{{ project.proj_num }}</th>
+                        <td>{{ project.proj_name }}</td>
+                        <td>{{ project.proj_value }}</td>
+                        <td>{{ project.proj_balance }}</td>
+                        <td>{{ project.emp_num }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="{% url 'project_edit' project.proj_num %}">Edit</a>
+                            <a class="btn btn-danger" href="{% url 'project_delete' project.proj_num %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <h3>In this register dosn't exist projects.</h3>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock content %}

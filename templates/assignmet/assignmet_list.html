@@ -1,0 +1,42 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Assignmet Number</th>
+                <th scope="col">Assignmet Date</th>
+                <th scope="col">Project Number</th>
+                <th scope="col">Employee Number</th>
+                <!--<th scope="col">Assignmet Job</th>
+                <th scope="col">Assignmet chg hours</th>-->
+                <th scope="col">Assignmet hours</th>
+                <th scope="col">Assignmet charge</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% if object_list %}
+                {% for assigmmet in object_list %}
+                    <tr class="table-light">
+                        <th scope="row">{{ assigmmet.assign_num }}</th>
+                        <td>{{ assigmmet.assign_date }}</td>
+                        <td>{{ assigmmet.proj_num }}</td>
+                        <td>{{ assigmmet.emp_num }}</td>
+                        <!--<<td>{{ assigmmet.assign_job }}</td>
+                        <td>{{ assigmmet.assign_chg_hr }}</td>-->
+                        <td>{{ assigmmet.assign_hours }}</td>
+                        <td>{{ assigmmet.assign_charge }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="{% url 'assignmet_edit' assigmmet.assign_num %}">Edit</a>
+                            <a class="btn btn-danger" href="{% url 'assignmet_delete' assigmmet.assign_num %}">Eliminate</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <h3>In this table doesn't exist registers.</h3>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock content %}

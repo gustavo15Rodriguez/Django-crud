@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    {% include 'base/head_css.html' %}
+
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+</head>
+<body>
+
+    {% include 'base/navbar.html' %}
+
+    <div class="container">
+            {% block content %}
+                <br>
+                <h1>Welcome!!!</h1>
+                <br>
+                <a href="#" class="thumb pull-left">
+                    <img class="img-thumbnail" src="{%  static 'img/construction.jpg' %}">
+                </a>
+
+            {% endblock content %}
+    </div>
+
+    {% block footer %}
+        <div class="container">
+
+            <br>
+            <h2>Copyright - 2019</h2>
+            <br>
+
+        </div>
+    {% endblock footer %}
+
+    {% include 'base/javascript.html' %}
+
+</body>
+</html>
